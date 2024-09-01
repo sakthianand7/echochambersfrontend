@@ -49,32 +49,73 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_music),
-            label: 'Library',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mic),
-            label: 'Studio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 0), // Adjust the body padding to accommodate the player
+        child: _pages[_selectedIndex],
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildPlayer(), // Player widget at the bottom
+          BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.library_music),
+                label: 'Library',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.mic),
+                label: 'Studio',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.orangeAccent,
+            unselectedItemColor: Colors.grey,
+            onTap: _onItemTapped,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.black,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed
+      ),
+    );
+  }
+
+  Widget _buildPlayer() {
+    return Container(
+      color: Colors.grey[900],
+      height: 60,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          children: [
+            const Icon(Icons.music_note, color: Colors.white),
+            const SizedBox(width: 10),
+            const Text(
+              'Playing Podcast...',
+              style: TextStyle(color: Colors.white),
+            ),
+            const Spacer(),
+            IconButton(
+              icon: const Icon(Icons.play_arrow, color: Colors.white),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.skip_next, color: Colors.white),
+              onPressed: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-

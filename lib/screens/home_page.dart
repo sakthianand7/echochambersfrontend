@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Echo Chambers'),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black, // Dark background for AppBar
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -16,21 +16,43 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Text('Featured Podcasts', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                'Featured Podcasts',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orangeAccent, // Orange accent for headings
+                ),
+              ),
               const SizedBox(height: 10),
               _buildPodcastList(),
               const SizedBox(height: 20),
-              const Text('Recommendations', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                'Recommendations',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orangeAccent, // Orange accent for headings
+                ),
+              ),
               const SizedBox(height: 10),
               _buildPodcastList(),
               const SizedBox(height: 20),
-              const Text('New Releases', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                'New Releases',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orangeAccent, // Orange accent for headings
+                ),
+              ),
               const SizedBox(height: 10),
               _buildPodcastList(),
             ],
           ),
         ),
       ),
+      backgroundColor: Colors.black, // Dark background for the page
     );
   }
 
@@ -49,11 +71,21 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   height: 150,
-                  color: Colors.grey[300],
-                  child: const Center(child: Text('Podcast Image')),
+                  color: Colors.grey[800], // Dark grey for podcast images
+                  child: const Center(
+                    child: Icon(
+                      Icons.audiotrack,
+                      color: Colors.white, // White icon to stand out
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 5),
-                const Text('Podcast Title', maxLines: 2, overflow: TextOverflow.ellipsis),
+                const Text(
+                  'Podcast Title',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: Colors.white), // White text for titles
+                ),
               ],
             ),
           );
